@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -45,6 +45,10 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
     }
     setIsMobileMenuOpen(false);
   };
+
+  const goHome = useCallback(() => {
+    router.push("/");
+  }, [router]);
 
   return (
     <motion.header
@@ -109,6 +113,7 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                     animation: "shimmer 3s ease-in-out infinite",
                   }),
                 }}
+                onClick={goHome}
               >
                 Juniverse
               </motion.h1>
