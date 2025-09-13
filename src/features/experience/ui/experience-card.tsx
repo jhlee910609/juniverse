@@ -1,9 +1,9 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
-import { Experience } from "@/entities/user";
+import { memo } from "react";
+import type { Experience } from "@/entities/user";
 
 interface ExperienceCardProps {
   experience: Experience;
@@ -24,9 +24,7 @@ export const ExperienceCard = memo(function ExperienceCard({
     >
       <div className="flex flex-col lg:flex-row lg:items-start gap-4">
         <div className="flex-1">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            {experience.title}
-          </h3>
+          <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
           <h4 className="text-xl text-blue-400 mb-3">{experience.company}</h4>
 
           <div className="flex flex-wrap gap-4 mb-4 text-gray-400">

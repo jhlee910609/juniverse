@@ -1,8 +1,8 @@
 "use client";
 
 import { memo } from "react";
-import { HeroSection } from "@/features/hero";
 import { AboutSection } from "@/features/about";
+import { HeroSection } from "@/features/hero";
 
 export const HomePage = memo(function HomePage() {
   return (

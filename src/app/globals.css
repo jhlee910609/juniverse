@@ -47,7 +47,9 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-noto-kr), var(--font-exo2), Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ::selection {

@@ -1,19 +1,16 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import { Project } from "@/entities/project";
+import { memo } from "react";
+import type { Project } from "@/entities/project";
 
 interface ProjectCardProps {
   project: Project;
   index: number;
 }
 
-export const ProjectCard = memo(function ProjectCard({
-  project,
-  index,
-}: ProjectCardProps) {
+export const ProjectCard = memo(function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -31,16 +28,11 @@ export const ProjectCard = memo(function ProjectCard({
 
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-        <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-          {project.description}
-        </p>
+        <p className="text-gray-400 mb-4 text-sm leading-relaxed">{project.description}</p>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 bg-white/10 text-gray-300 rounded text-xs"
-            >
+            <span key={tag} className="px-2 py-1 bg-white/10 text-gray-300 rounded text-xs">
               {tag}
             </span>
           ))}

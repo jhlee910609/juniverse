@@ -1,19 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import {
-  ArrowLeft,
-  ExternalLink,
-  Github,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-} from "lucide-react";
-import { useTheme } from "@/shared/hooks";
+import { ArrowLeft, ExternalLink, Github, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useTheme } from "@/shared/hooks";
 
 interface ProjectDetail {
   id: string;
@@ -43,13 +35,7 @@ const projectDetails: Record<string, Record<string, ProjectDetail>> = {
       description: "대규모 이커머스 플랫폼의 프론트엔드 아키텍처 설계 및 개발",
       longDescription:
         "월 200만명이 사용하는 대규모 이커머스 플랫폼의 전체 프론트엔드를 Next.js와 TypeScript로 재구축했습니다. 마이크로 프론트엔드 아키텍처를 도입하여 확장성과 유지보수성을 크게 개선했으며, 성능 최적화를 통해 페이지 로딩 속도를 50% 향상시켰습니다.",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "GraphQL",
-        "Tailwind CSS",
-        "Zustand",
-      ],
+      technologies: ["Next.js", "TypeScript", "GraphQL", "Tailwind CSS", "Zustand"],
       impact: "월 매출 30% 증가에 기여",
       features: [
         "실시간 상품 검색 및 필터링",
@@ -89,8 +75,7 @@ const projectDetails: Record<string, Record<string, ProjectDetail>> = {
     "admin-dashboard": {
       id: "admin-dashboard",
       name: "Admin Dashboard",
-      description:
-        "실시간 데이터 시각화와 관리 기능을 제공하는 관리자 대시보드",
+      description: "실시간 데이터 시각화와 관리 기능을 제공하는 관리자 대시보드",
       longDescription:
         "비즈니스 관리자들이 실시간으로 매출, 사용자 활동, 시스템 상태를 모니터링할 수 있는 대시보드를 구축했습니다. D3.js를 활용한 고급 차트와 WebSocket을 통한 실시간 업데이트로 관리 업무의 효율성을 크게 향상시켰습니다.",
       technologies: ["React", "D3.js", "WebSocket", "Material-UI"],
@@ -206,13 +191,9 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     if (!project?.images) return;
 
     if (direction === "prev") {
-      setCurrentImageIndex((prev) =>
-        prev === 0 ? project.images.length - 1 : prev - 1
-      );
+      setCurrentImageIndex((prev) => (prev === 0 ? project.images.length - 1 : prev - 1));
     } else {
-      setCurrentImageIndex((prev) =>
-        prev === project.images.length - 1 ? 0 : prev + 1
-      );
+      setCurrentImageIndex((prev) => (prev === project.images.length - 1 ? 0 : prev + 1));
     }
   };
 
@@ -242,14 +223,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       >
         <div className="text-center">
           <div className="text-6xl mb-4">🚀</div>
-          <h1 className="text-2xl font-bold mb-2">
-            프로젝트를 찾을 수 없습니다
-          </h1>
-          <p
-            className={`mb-6 ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
+          <h1 className="text-2xl font-bold mb-2">프로젝트를 찾을 수 없습니다</h1>
+          <p className={`mb-6 ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
             요청하신 프로젝트 정보가 존재하지 않습니다.
           </p>
           <motion.button
@@ -291,57 +266,33 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           </button>
 
           <div className="mb-6">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              {project.name}
-            </h1>
-            <p
-              className={`text-xl mb-6 ${
-                theme === "dark" ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.name}</h1>
+            <p className={`text-xl mb-6 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
               {project.longDescription}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               <div
-                className={`p-4 rounded-lg ${
-                  theme === "dark" ? "bg-gray-800/50" : "bg-gray-100"
-                }`}
+                className={`p-4 rounded-lg ${theme === "dark" ? "bg-gray-800/50" : "bg-gray-100"}`}
               >
                 <h3 className="font-semibold mb-2">개발 기간</h3>
-                <p
-                  className={
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }
-                >
+                <p className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
                   {project.duration}
                 </p>
               </div>
               <div
-                className={`p-4 rounded-lg ${
-                  theme === "dark" ? "bg-gray-800/50" : "bg-gray-100"
-                }`}
+                className={`p-4 rounded-lg ${theme === "dark" ? "bg-gray-800/50" : "bg-gray-100"}`}
               >
                 <h3 className="font-semibold mb-2">역할</h3>
-                <p
-                  className={
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }
-                >
+                <p className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
                   {project.role}
                 </p>
               </div>
               <div
-                className={`p-4 rounded-lg ${
-                  theme === "dark" ? "bg-gray-800/50" : "bg-gray-100"
-                }`}
+                className={`p-4 rounded-lg ${theme === "dark" ? "bg-gray-800/50" : "bg-gray-100"}`}
               >
                 <h3 className="font-semibold mb-2">팀 구성</h3>
-                <p
-                  className={
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }
-                >
+                <p className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
                   {project.teamSize}
                 </p>
               </div>
@@ -380,9 +331,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         </motion.div>
 
         {/* 미디어 갤러리 */}
-        {(project.images?.length > 0 ||
-          !!project?.videos?.length ||
-          !!project?.gifs?.length) && (
+        {(project.images?.length > 0 || !!project?.videos?.length || !!project?.gifs?.length) && (
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -425,9 +374,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
                         className={`w-3 h-3 rounded-full ${
-                          index === currentImageIndex
-                            ? "bg-blue-500"
-                            : "bg-gray-300"
+                          index === currentImageIndex ? "bg-blue-500" : "bg-gray-300"
                         }`}
                       />
                     ))}
@@ -479,9 +426,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             {/* GIF */}
             {project.gifs && project.gifs.length > 0 && (
               <div className="mb-8">
-                <h4 className="text-lg font-semibold mb-4">
-                  인터랙션 미리보기
-                </h4>
+                <h4 className="text-lg font-semibold mb-4">인터랙션 미리보기</h4>
                 {project.gifs.map((gif, index) => (
                   <img
                     key={index}
@@ -611,9 +556,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               }`}
             >
               <h3 className="text-2xl font-bold mb-4">프로젝트 임팩트</h3>
-              <p className="text-xl font-semibold text-blue-400">
-                {project.impact}
-              </p>
+              <p className="text-xl font-semibold text-blue-400">{project.impact}</p>
             </div>
           </motion.section>
         )}

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { memo, useCallback } from "react";
 import { motion } from "framer-motion";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { cn, scrollToElement } from "@/shared/lib";
+import React, { memo, useCallback } from "react";
 import { useScroll, useTheme } from "@/shared/hooks";
+import { cn, scrollToElement } from "@/shared/lib";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -157,11 +157,7 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                     "ml-2"
                   )}
                 >
-                  {theme === "dark" ? (
-                    <Sun className="w-5 h-5" />
-                  ) : (
-                    <Moon className="w-5 h-5" />
-                  )}
+                  {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 </motion.button>
               </div>
             )}
@@ -175,11 +171,7 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                   onClick={toggleTheme}
                   className="p-2 rounded-xl text-gray-800 dark:text-white hover:bg-white/10"
                 >
-                  {theme === "dark" ? (
-                    <Sun className="w-5 h-5" />
-                  ) : (
-                    <Moon className="w-5 h-5" />
-                  )}
+                  {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 </motion.button>
 
                 <motion.button
@@ -192,11 +184,7 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                     animate={isMobileMenuOpen ? { rotate: 180 } : { rotate: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {isMobileMenuOpen ? (
-                      <X className="w-6 h-6" />
-                    ) : (
-                      <Menu className="w-6 h-6" />
-                    )}
+                    {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                   </motion.div>
                 </motion.button>
               </div>

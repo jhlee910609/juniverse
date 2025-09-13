@@ -7,7 +7,7 @@ export function SmoothScroll() {
     const handleClick = (e: Event) => {
       const target = e.target as HTMLAnchorElement;
       const href = target.getAttribute("href");
-      
+
       if (href?.startsWith("#")) {
         e.preventDefault();
         const element = document.querySelector(href);
@@ -21,7 +21,7 @@ export function SmoothScroll() {
     };
 
     document.addEventListener("click", handleClick);
-    
+
     return () => {
       document.removeEventListener("click", handleClick);
     };

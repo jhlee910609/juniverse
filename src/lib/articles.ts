@@ -1,7 +1,7 @@
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
-import { Article, ArticleMetadata } from "@/shared/types/article";
+import path from "path";
+import type { Article, ArticleMetadata } from "@/shared/types/article";
 
 const articlesDirectory = path.join(process.cwd(), "public/articles");
 
@@ -9,9 +9,7 @@ export function getArticleFiles(): string[] {
   if (!fs.existsSync(articlesDirectory)) {
     return [];
   }
-  return fs
-    .readdirSync(articlesDirectory)
-    .filter((file) => file.endsWith(".md"));
+  return fs.readdirSync(articlesDirectory).filter((file) => file.endsWith(".md"));
 }
 
 export function getArticleBySlug(slug: string): Article | null {
@@ -68,8 +66,7 @@ export function getAllArticles(): ArticleMetadata[] {
 
   // 날짜순으로 정렬 (최신순)
   return articles.sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 }
 

@@ -1,11 +1,11 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { TypewriterEffect, RocketLaunchEffect } from "@/shared/ui";
-import { scrollToElement } from "@/shared/lib";
+import { memo } from "react";
 import { userProfile } from "@/entities/user";
+import { scrollToElement } from "@/shared/lib";
+import { RocketLaunchEffect, TypewriterEffect } from "@/shared/ui";
 
 export const HeroSection = memo(function HeroSection() {
   const handleScrollToNext = () => {
@@ -13,10 +13,7 @@ export const HeroSection = memo(function HeroSection() {
   };
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center px-4"
-    >
+    <section id="home" className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,9 +54,7 @@ export const HeroSection = memo(function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-12"
         >
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            {userProfile.description}
-          </p>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">{userProfile.description}</p>
         </motion.div>
 
         <motion.div

@@ -1,8 +1,8 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
+import { memo } from "react";
 import { useTheme } from "@/shared/hooks";
 
 interface ArticleSearchProps {
@@ -59,8 +59,8 @@ export const ArticleSearch = memo(function ArticleSearch({
               !selectedCategory
                 ? "bg-blue-500 text-white"
                 : theme === "dark"
-                ? "bg-white/5 border border-white/10 text-gray-300 hover:text-white"
-                : "bg-gray-100 border border-gray-300 text-gray-700 hover:text-gray-900"
+                  ? "bg-white/5 border border-white/10 text-gray-300 hover:text-white"
+                  : "bg-gray-100 border border-gray-300 text-gray-700 hover:text-gray-900"
             }`}
           >
             전체
@@ -74,8 +74,8 @@ export const ArticleSearch = memo(function ArticleSearch({
                 selectedCategory === category
                   ? "bg-blue-500 text-white"
                   : theme === "dark"
-                  ? "bg-white/5 border border-white/10 text-gray-300 hover:text-white"
-                  : "bg-gray-100 border border-gray-300 text-gray-700 hover:text-gray-900"
+                    ? "bg-white/5 border border-white/10 text-gray-300 hover:text-white"
+                    : "bg-gray-100 border border-gray-300 text-gray-700 hover:text-gray-900"
               }`}
             >
               {category}
@@ -104,8 +104,8 @@ export const ArticleSearch = memo(function ArticleSearch({
                   selectedTags.includes(tag)
                     ? "bg-purple-500 text-white"
                     : theme === "dark"
-                    ? "bg-white/5 border border-white/10 text-gray-400 hover:text-white"
-                    : "bg-gray-100 border border-gray-300 text-gray-600 hover:text-gray-900"
+                      ? "bg-white/5 border border-white/10 text-gray-400 hover:text-white"
+                      : "bg-gray-100 border border-gray-300 text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {tag}

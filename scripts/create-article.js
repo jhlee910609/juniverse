@@ -1,36 +1,29 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const articlesDir = path.join(__dirname, '..', 'public', 'articles');
+const articlesDir = path.join(__dirname, "..", "public", "articles");
 
 function createArticle(options) {
-  const {
-    title,
-    description,
-    category = 'Frontend',
-    tags = [],
-    slug,
-    readingTime = 5
-  } = options;
+  const { title, description, category = "Frontend", tags = [], slug, readingTime = 5 } = options;
 
   if (!title || !description || !slug) {
-    console.error('Error: title, description, and slug are required');
+    console.error("Error: title, description, and slug are required");
     process.exit(1);
   }
 
-  const publishedAt = new Date().toISOString().split('T')[0];
+  const publishedAt = new Date().toISOString().split("T")[0];
 
   const frontmatter = `---
 title: "${title}"
 description: "${description}"
 category: "${category}"
-tags: [${tags.map(tag => `"${tag}"`).join(', ')}]
+tags: [${tags.map((tag) => `"${tag}"`).join(", ")}]
 publishedAt: "${publishedAt}"
 updatedAt: "${publishedAt}"
 readingTime: ${readingTime}
@@ -85,7 +78,7 @@ console.log('Hello, World!');
 
   console.log(`✅ Article created successfully: ${filepath}`);
   console.log(`📝 Title: ${title}`);
-  console.log(`🏷️  Tags: ${tags.join(', ')}`);
+  console.log(`🏷️  Tags: ${tags.join(", ")}`);
   console.log(`📂 Category: ${category}`);
   console.log(`🔗 Slug: ${slug}`);
 }
@@ -100,37 +93,37 @@ function parseArgs() {
     const nextArg = args[i + 1];
 
     switch (arg) {
-      case '--title':
-      case '-t':
+      case "--title":
+      case "-t":
         options.title = nextArg;
         i++;
         break;
-      case '--description':
-      case '-d':
+      case "--description":
+      case "-d":
         options.description = nextArg;
         i++;
         break;
-      case '--category':
-      case '-c':
+      case "--category":
+      case "-c":
         options.category = nextArg;
         i++;
         break;
-      case '--tags':
-        options.tags = nextArg ? nextArg.split(',').map(tag => tag.trim()) : [];
+      case "--tags":
+        options.tags = nextArg ? nextArg.split(",").map((tag) => tag.trim()) : [];
         i++;
         break;
-      case '--slug':
-      case '-s':
+      case "--slug":
+      case "-s":
         options.slug = nextArg;
         i++;
         break;
-      case '--reading-time':
-      case '-r':
+      case "--reading-time":
+      case "-r":
         options.readingTime = parseInt(nextArg) || 5;
         i++;
         break;
-      case '--help':
-      case '-h':
+      case "--help":
+      case "-h":
         showHelp();
         process.exit(0);
         break;
@@ -174,27 +167,28 @@ Examples:
 
 // 대화형 모드
 async function interactiveMode() {
-  const readline = await import('readline');
+  const readline = await import("readline");
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   });
 
-  const question = (prompt) => new Promise((resolve) => {
-    rl.question(prompt, resolve);
-  });
+  const question = (prompt) =>
+    new Promise((resolve) => {
+      rl.question(prompt, resolve);
+    });
 
   try {
-    console.log('📝 Article Creator - Interactive Mode\n');
+    console.log("📝 Article Creator - Interactive Mode\n");
 
-    const title = await question('Article title: ');
-    const description = await question('Description: ');
-    const slug = await question('Slug: ');
-    const category = await question('Category (default: Frontend): ') || 'Frontend';
-    const tagsInput = await question('Tags (comma-separated): ');
-    const readingTimeInput = await question('Reading time in minutes (default: 5): ');
+    const title = await question("Article title: ");
+    const description = await question("Description: ");
+    const slug = await question("Slug: ");
+    const category = (await question("Category (default: Frontend): ")) || "Frontend";
+    const tagsInput = await question("Tags (comma-separated): ");
+    const readingTimeInput = await question("Reading time in minutes (default: 5): ");
 
-    const tags = tagsInput ? tagsInput.split(',').map(tag => tag.trim()) : [];
+    const tags = tagsInput ? tagsInput.split(",").map((tag) => tag.trim()) : [];
     const readingTime = parseInt(readingTimeInput) || 5;
 
     createArticle({
@@ -203,10 +197,10 @@ async function interactiveMode() {
       slug,
       category,
       tags,
-      readingTime
+      readingTime,
     });
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error("Error:", error.message);
   } finally {
     rl.close();
   }

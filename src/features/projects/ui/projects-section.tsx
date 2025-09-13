@@ -1,7 +1,7 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { projects } from "@/entities/project";
 import { ProjectCard } from "./project-card";
 
@@ -19,9 +19,7 @@ export const ProjectsSection = memo(function ProjectsSection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="text-blue-400">Projects</span>
           </h2>
-          <p className="text-xl text-gray-400">
-            Some of my recent work that I&apos;m proud of
-          </p>
+          <p className="text-xl text-gray-400">Some of my recent work that I&apos;m proud of</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">

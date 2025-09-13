@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Palette, Zap, Heart } from "lucide-react";
+import { Code2, Heart, Palette, Zap } from "lucide-react";
 
 const highlights = [
   {
     icon: Code2,
     title: "깨끗한 코드",
-    description: "시간이 지나도 유지보수가 가능하고 확장성 있는 깨끗한 코드를 작성하는 것을 믿어요.",
+    description:
+      "시간이 지나도 유지보수가 가능하고 확장성 있는 깨끗한 코드를 작성하는 것을 믿어요.",
   },
   {
     icon: Palette,
@@ -41,7 +42,7 @@ export function AboutSection() {
             About <span className="text-blue-400">me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            놀라운 디지털 경험을 만드는 것을 좋아하는 프론트엔드 개발자입니다. <br/>
+            놀라운 디지털 경험을 만드는 것을 좋아하는 프론트엔드 개발자입니다. <br />
             현대적인 웹 기술과 사용자 중심 디자인에 집중하여, 아이디어를 코드로 현실로 만들어냅니다.
           </p>
         </motion.div>
@@ -71,15 +72,15 @@ export function AboutSection() {
             className="space-y-6"
           >
             <p className="text-foreground text-lg leading-relaxed">
-              5년 이상의 프론트엔드 개발 경험을 바탕으로 React, Next.js, TypeScript를 사용하여 
-              현대적인 웹 애플리케이션 제작을 전문으로 하고 있어요. 깨끗한 코드 작성과 
-              예외적인 경험을 제공하는 아름다운 인터페이스 제작에 열정을 가지고 있어요.
+              5년 이상의 프론트엔드 개발 경험을 바탕으로 React, Next.js, TypeScript를 사용하여
+              현대적인 웹 애플리케이션 제작을 전문으로 하고 있어요. 깨끗한 코드 작성과 예외적인
+              경험을 제공하는 아름다운 인터페이스 제작에 열정을 가지고 있어요.
             </p>
             <p className="text-foreground text-lg leading-relaxed">
-              코딩을 하지 않을 때는 새로운 기술을 탐구하거나, 오픈소스 프로젝트에 기여하거나, 
-              개발자 커뮤니티와 지식을 공유하는 시간을 보내요.
+              코딩을 하지 않을 때는 새로운 기술을 탐구하거나, 오픈소스 프로젝트에 기여하거나, 개발자
+              커뮤니티와 지식을 공유하는 시간을 보내요.
             </p>
-            
+
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="bg-card border border-border rounded-lg px-4 py-2">
                 <span className="text-blue-400 font-semibold">5+</span>
@@ -132,7 +133,7 @@ export function AboutSection() {
             whileTap={{ scale: 0.95 }}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
           >
-함께 일해요
+            함께 일해요
           </motion.button>
         </motion.div>
       </div>
