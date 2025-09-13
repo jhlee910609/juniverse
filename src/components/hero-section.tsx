@@ -3,14 +3,20 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { TypewriterEffect } from "./typewriter-effect";
+import { RocketLaunchEffect } from "./rocket-launch-effect";
 
 export function HeroSection() {
   const scrollToNext = () => {
-    document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("experience")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 bg-background">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center px-4 bg-background"
+    >
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,9 +26,11 @@ export function HeroSection() {
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Welcome to my{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-              universe
-            </span>
+            <RocketLaunchEffect>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                universe
+              </span>
+            </RocketLaunchEffect>
           </h1>
         </motion.div>
 
@@ -34,10 +42,9 @@ export function HeroSection() {
         >
           <TypewriterEffect
             texts={[
-              "아름다운 사용자 인터페이스를 만들어요",
-              "고성능 웹 애플리케이션을 개발해요",
-              "깨끗한 코드와 UI 매직을 사랑해요",
-              "프론트엔드 개발에 열정적이에요",
+              "Hello, My name is JunHee Lee",
+              "I'm a Frontend Developer",
+              "Growing together as a developer",
             ]}
             className="text-xl md:text-2xl text-muted-foreground"
           />
@@ -50,7 +57,9 @@ export function HeroSection() {
           className="mb-12"
         >
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            React, Next.js, TypeScript를 전문으로 하는 열정적인 프론트엔드 개발자입니다.<br/>
+            React, Next.js, TypeScript를 전문으로 하는 열정적인 프론트엔드
+            개발자입니다.
+            <br />
             현대적인 웹 기술로 매력적인 사용자 경험을 만들어냅니다.
           </p>
         </motion.div>
@@ -61,7 +70,13 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-wrap justify-center gap-3 mb-16"
         >
-          {["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"].map((tech, index) => (
+          {[
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion",
+          ].map((tech, index) => (
             <motion.span
               key={tech}
               initial={{ opacity: 0, scale: 0.5 }}
