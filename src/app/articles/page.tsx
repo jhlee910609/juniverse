@@ -9,44 +9,7 @@ import { ArticleMetadata } from "@/shared/types/article";
 import { useTheme } from "@/shared/hooks";
 
 // Mock data - 실제로는 API나 파일에서 가져올 예정
-const mockArticles: ArticleMetadata[] = [
-  {
-    id: "1",
-    title: "React 18의 새로운 기능들",
-    description:
-      "React 18에서 새롭게 추가된 Concurrent Features와 Suspense의 개선사항에 대해 알아봅시다.",
-    tags: ["React", "JavaScript", "Frontend"],
-    category: "Frontend",
-    publishedAt: "2024-01-15",
-    updatedAt: "2024-01-15",
-    readingTime: 8,
-    slug: "react-18-new-features",
-  },
-  {
-    id: "2",
-    title: "TypeScript 고급 타입 활용법",
-    description:
-      "TypeScript의 고급 타입 시스템을 활용하여 더 안전하고 표현력 있는 코드를 작성하는 방법을 소개합니다.",
-    tags: ["TypeScript", "JavaScript", "Type Safety"],
-    category: "Backend",
-    publishedAt: "2024-01-10",
-    updatedAt: "2024-01-12",
-    readingTime: 12,
-    slug: "typescript-advanced-types",
-  },
-  {
-    id: "3",
-    title: "Next.js 앱 라우터로 마이그레이션하기",
-    description:
-      "Next.js 13의 앱 라우터로 기존 페이지 라우터 기반 프로젝트를 마이그레이션하는 실무 가이드입니다.",
-    tags: ["Next.js", "React", "Migration"],
-    category: "Frontend",
-    publishedAt: "2024-01-05",
-    updatedAt: "2024-01-08",
-    readingTime: 15,
-    slug: "nextjs-app-router-migration",
-  },
-];
+const mockArticles: ArticleMetadata[] = [];
 
 export default function ArticlesPage() {
   const router = useRouter();
