@@ -58,17 +58,22 @@ export const ProjectCard = memo(function ProjectCard({
             <ExternalLink className="w-4 h-4" />
             Live Demo
           </motion.a>
-          <motion.a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-3 py-2 border border-white/20 hover:bg-white/10 text-white rounded transition-colors text-sm"
-          >
-            <Github className="w-4 h-4" />
-            Code
-          </motion.a>
+          {project.githubUrl?.map((github) => {
+            return (
+              <motion.a
+                key={github.url}
+                href={github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-3 py-2 border border-white/20 hover:bg-white/10 text-white rounded transition-colors text-sm"
+              >
+                <Github className="w-4 h-4" />
+                {github.label}
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </motion.div>
