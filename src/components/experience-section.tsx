@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
+    id: "senior-frontend-developer",
     title: "Senior Frontend Developer",
     company: "Tech Innovators Inc.",
     location: "Seoul, South Korea",
@@ -14,6 +16,7 @@ const experiences = [
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL"],
   },
   {
+    id: "frontend-developer",
     title: "Frontend Developer",
     company: "Digital Solutions Co.",
     location: "Seoul, South Korea",
@@ -23,6 +26,7 @@ const experiences = [
     skills: ["React", "Vue.js", "JavaScript", "SCSS", "REST APIs"],
   },
   {
+    id: "junior-web-developer",
     title: "Junior Web Developer",
     company: "StartUp Labs",
     location: "Seoul, South Korea",
@@ -34,8 +38,14 @@ const experiences = [
 ];
 
 export function ExperienceSection() {
+  const router = useRouter();
+
+  const handleExperienceClick = (id: string) => {
+    router.push(`/experience/${id}`);
+  };
+
   return (
-    <section id="experience" className="py-20 px-4 bg-background">
+    <section id="experience" className="py-20 px-4 bg-background relative z-10">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,14 +70,17 @@ export function ExperienceSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card border border-border rounded-lg p-6 hover:bg-muted transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => handleExperienceClick(exp.id)}
+              className="bg-card border border-border rounded-lg p-6 hover:bg-muted transition-all duration-300 cursor-pointer group"
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                  <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-blue-400 transition-colors">
                     {exp.title}
                   </h3>
-                  <h4 className="text-xl text-blue-400 mb-3">{exp.company}</h4>
+                  <h4 className="text-xl text-blue-400 mb-3 group-hover:text-blue-300 transition-colors">{exp.company}</h4>
 
                   <div className="flex flex-wrap gap-4 mb-4 text-muted-foreground">
                     <div className="flex items-center gap-2">

@@ -52,13 +52,14 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
       animate={{
         opacity: 1,
         position: "fixed",
+        zIndex: 50,
       }}
       transition={{
         duration: 0.3,
         ease: [0.4, 0, 0.2, 1],
       }}
       className={cn(
-        "top-8 sm:top-10 left-0 right-0 z-50 transition-all duration-300 w-full",
+        "top-8 sm:top-10 left-0 right-0 z-40 transition-all duration-300 w-full",
         className
       )}
     >
@@ -99,7 +100,8 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                       ? "0 2px 4px rgba(255,255,255,0.1)"
                       : "0 2px 4px rgba(0,0,0,0.1)",
                   ...(theme === "dark" && {
-                    background: "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)",
+                    background:
+                      "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)",
                     backgroundSize: "200% auto",
                     color: "transparent",
                     WebkitBackgroundClip: "text",
