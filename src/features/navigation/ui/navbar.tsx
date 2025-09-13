@@ -2,15 +2,17 @@
 
 import React, { memo } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { cn, scrollToElement } from "@/shared/lib";
 import { useScroll, useTheme } from "@/shared/hooks";
 
 const navItems = [
   { name: "Home", href: "#home" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "About", href: "#about" },
+
+  { name: "Experience", href: "/experience" },
+  { name: "Project", href: "/project" },
+  { name: "Article", href: "/articles" },
 ] as const;
 
 interface NavbarProps {
@@ -21,10 +23,15 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
   const isScrolled = useScroll();
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleNavClick = (href: string) => {
-    const elementId = href.substring(1);
-    scrollToElement(elementId);
+    if (href.startsWith("#")) {
+      const elementId = href.substring(1);
+      scrollToElement(elementId);
+    } else {
+      router.push(href);
+    }
     setIsMobileMenuOpen(false);
   };
 
@@ -55,8 +62,8 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                 ? "text-white"
                 : "text-gray-900"
               : theme === "dark"
-                ? "text-white"
-                : "text-gray-900"
+              ? "text-white"
+              : "text-gray-900"
           )}
         >
           Portfolio
@@ -75,8 +82,8 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                     ? "text-gray-300"
                     : "text-gray-800"
                   : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-800"
+                  ? "text-gray-300"
+                  : "text-gray-800"
               )}
             >
               {item.name}
@@ -95,27 +102,31 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
             )}
           >
             {theme === "dark" ? (
-              <Sun className={cn(
-                "w-5 h-5 transition-colors",
-                isScrolled
-                  ? theme === "dark"
+              <Sun
+                className={cn(
+                  "w-5 h-5 transition-colors",
+                  isScrolled
+                    ? theme === "dark"
+                      ? "text-gray-300"
+                      : "text-gray-700"
+                    : theme === "dark"
                     ? "text-gray-300"
                     : "text-gray-700"
-                  : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-              )} />
+                )}
+              />
             ) : (
-              <Moon className={cn(
-                "w-5 h-5 transition-colors",
-                isScrolled
-                  ? theme === "dark"
+              <Moon
+                className={cn(
+                  "w-5 h-5 transition-colors",
+                  isScrolled
+                    ? theme === "dark"
+                      ? "text-gray-300"
+                      : "text-gray-700"
+                    : theme === "dark"
                     ? "text-gray-300"
                     : "text-gray-700"
-                  : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-              )} />
+                )}
+              />
             )}
           </motion.button>
         </div>
@@ -133,27 +144,31 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
             )}
           >
             {theme === "dark" ? (
-              <Sun className={cn(
-                "w-5 h-5 transition-colors",
-                isScrolled
-                  ? theme === "dark"
+              <Sun
+                className={cn(
+                  "w-5 h-5 transition-colors",
+                  isScrolled
+                    ? theme === "dark"
+                      ? "text-gray-300"
+                      : "text-gray-700"
+                    : theme === "dark"
                     ? "text-gray-300"
                     : "text-gray-700"
-                  : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-              )} />
+                )}
+              />
             ) : (
-              <Moon className={cn(
-                "w-5 h-5 transition-colors",
-                isScrolled
-                  ? theme === "dark"
+              <Moon
+                className={cn(
+                  "w-5 h-5 transition-colors",
+                  isScrolled
+                    ? theme === "dark"
+                      ? "text-gray-300"
+                      : "text-gray-700"
+                    : theme === "dark"
                     ? "text-gray-300"
                     : "text-gray-700"
-                  : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-              )} />
+                )}
+              />
             )}
           </motion.button>
 
@@ -168,8 +183,8 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                   ? "text-gray-300"
                   : "text-gray-700"
                 : theme === "dark"
-                  ? "text-gray-300"
-                  : "text-gray-700"
+                ? "text-gray-300"
+                : "text-gray-700"
             )}
           >
             {isMobileMenuOpen ? (
@@ -206,8 +221,8 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                       ? "text-gray-300 hover:bg-gray-800"
                       : "text-gray-700 hover:bg-gray-100"
                     : theme === "dark"
-                      ? "text-gray-300 hover:bg-white/10"
-                      : "text-gray-700 hover:bg-white/10"
+                    ? "text-gray-300 hover:bg-white/10"
+                    : "text-gray-700 hover:bg-white/10"
                 )}
               >
                 {item.name}
@@ -219,4 +234,3 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
     </motion.nav>
   );
 });
-
