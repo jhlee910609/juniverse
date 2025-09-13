@@ -4,7 +4,8 @@
       "Bash(npm uninstall:*)",
       "Bash(npm install)",
       "Bash(npm run dev:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "WebFetch(domain:jhlee910609.github.io)"
     ],
     "deny": [],
     "ask": []
