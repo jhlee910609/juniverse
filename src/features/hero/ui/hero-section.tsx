@@ -42,9 +42,10 @@ export const HeroSection = memo(function HeroSection() {
         >
           <TypewriterEffect
             texts={[
-              `Hello, My name is ${userProfile.name}`,
-              "I'm a Frontend Developer",
-              "Growing together as a developer",
+              `안녕하세요, 저는 ${userProfile.name}입니다`,
+              "소프트웨어 엔지니어입니다",
+              "성능 최적화 전문가입니다",
+              "함께 성장하는 개발자입니다",
             ]}
             className="text-xl md:text-2xl text-gray-300"
           />
