@@ -51,21 +51,4 @@ export const projects: Project[] = [
     liveUrl: "",
     githubUrl: [],
   },
-  {
-    id: "4",
-    title: "Portfolio Site with FSD Architecture",
-    description:
-      "Feature-Sliced Design 아키텍처를 활용한 현대적인 포트폴리오 사이트. Next.js 15와 React 19의 최신 기능 적용. 글래스모피즘 디자인과 부드러운 애니메이션으로 매력적인 사용자 경험 구현.",
-    image: "/api/placeholder/600/400",
-    tags: [
-      "Next.js",
-      "React 19",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "FSD Architecture",
-    ],
-    liveUrl: "",
-    githubUrl: ["https://github.com"],
-  },
 ];
