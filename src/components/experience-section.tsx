@@ -9,15 +9,17 @@ const experiences = [
     company: "Tech Innovators Inc.",
     location: "Seoul, South Korea",
     period: "2022 - Present",
-    description: "Leading frontend development team, architecting scalable React applications with Next.js and TypeScript. Improved performance by 40% and user engagement by 25%.",
+    description:
+      "Leading frontend development team, architecting scalable React applications with Next.js and TypeScript. Improved performance by 40% and user engagement by 25%.",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL"],
   },
   {
     title: "Frontend Developer",
     company: "Digital Solutions Co.",
-    location: "Seoul, South Korea", 
+    location: "Seoul, South Korea",
     period: "2020 - 2022",
-    description: "Developed responsive web applications using modern JavaScript frameworks. Collaborated with UX/UI designers to create pixel-perfect user interfaces.",
+    description:
+      "Developed responsive web applications using modern JavaScript frameworks. Collaborated with UX/UI designers to create pixel-perfect user interfaces.",
     skills: ["React", "Vue.js", "JavaScript", "SCSS", "REST APIs"],
   },
   {
@@ -25,14 +27,15 @@ const experiences = [
     company: "StartUp Labs",
     location: "Seoul, South Korea",
     period: "2019 - 2020",
-    description: "Built and maintained company websites and web applications. Gained experience in full-stack development and agile methodologies.",
+    description:
+      "Built and maintained company websites and web applications. Gained experience in full-stack development and agile methodologies.",
     skills: ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
   },
 ];
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 px-4">
+    <section id="experience" className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,8 +47,8 @@ export function ExperienceSection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             My <span className="text-blue-400">Experience</span>
           </h2>
-          <p className="text-xl text-gray-400">
-            Building amazing digital experiences for the past 5 years
+          <p className="text-xl text-muted-foreground">
+            지난 5년간 놀라운 디지털 경험을 만들어왔어요
           </p>
         </motion.div>
 
@@ -57,14 +60,16 @@ export function ExperienceSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white/5 border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
+              className="bg-card border border-border rounded-lg p-6 hover:bg-muted transition-all duration-300"
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-2">{exp.title}</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    {exp.title}
+                  </h3>
                   <h4 className="text-xl text-blue-400 mb-3">{exp.company}</h4>
-                  
-                  <div className="flex flex-wrap gap-4 mb-4 text-gray-400">
+
+                  <div className="flex flex-wrap gap-4 mb-4 text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
                       <span>{exp.period}</span>
@@ -74,9 +79,9 @@ export function ExperienceSection() {
                       <span>{exp.location}</span>
                     </div>
                   </div>
-                  
-                  <p className="text-gray-300 mb-4">{exp.description}</p>
-                  
+
+                  <p className="text-foreground mb-4">{exp.description}</p>
+
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill) => (
                       <span

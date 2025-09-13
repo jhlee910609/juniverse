@@ -10,7 +10,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 bg-background">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,12 +34,12 @@ export function HeroSection() {
         >
           <TypewriterEffect
             texts={[
-              "I create beautiful user interfaces",
-              "I build performant web applications",
-              "I love clean code and UI magic",
-              "I'm passionate about frontend development",
+              "아름다운 사용자 인터페이스를 만들어요",
+              "고성능 웹 애플리케이션을 개발해요",
+              "깨끗한 코드와 UI 매직을 사랑해요",
+              "프론트엔드 개발에 열정적이에요",
             ]}
-            className="text-xl md:text-2xl text-gray-300"
+            className="text-xl md:text-2xl text-muted-foreground"
           />
         </motion.div>
 
@@ -49,9 +49,9 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-12"
         >
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            A passionate frontend developer specializing in React, Next.js, and TypeScript.
-            I create engaging user experiences with modern web technologies.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            React, Next.js, TypeScript를 전문으로 하는 열정적인 프론트엔드 개발자입니다.<br/>
+            현대적인 웹 기술로 매력적인 사용자 경험을 만들어냅니다.
           </p>
         </motion.div>
 
@@ -68,7 +68,7 @@ export function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-colors"
+              className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors"
             >
               {tech}
             </motion.span>
@@ -82,7 +82,7 @@ export function HeroSection() {
           onClick={scrollToNext}
           className="animate-bounce-gentle"
         >
-          <ChevronDown className="w-8 h-8 text-white/60 hover:text-white transition-colors" />
+          <ChevronDown className="w-8 h-8 text-muted-foreground hover:text-foreground transition-colors" />
         </motion.button>
       </div>
     </section>

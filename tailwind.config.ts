@@ -16,6 +16,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        card: "var(--card)",
+        "card-foreground": "var(--card-foreground)",
+        muted: "var(--muted)",
+        "muted-foreground": "var(--muted-foreground)",
+        border: "var(--border)",
         primary: {
           50: "#f0f9ff",
           500: "#3b82f6",
