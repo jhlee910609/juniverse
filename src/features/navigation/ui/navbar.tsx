@@ -20,7 +20,7 @@ interface NavbarProps {
 }
 
 export const Navbar = memo(function Navbar({ className }: NavbarProps) {
-  const { isScrolled, isVisible } = useScroll();
+  const { isScrolled } = useScroll();
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
