@@ -33,17 +33,31 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 px-4 py-4 transition-all duration-300",
-        isScrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         className
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div
+        className={cn(
+          "mx-auto flex items-center justify-between transition-all duration-500",
+          "mt-4 backdrop-blur-md",
+          isScrolled
+            ? "max-w-4xl bg-white/95 dark:bg-black/90 rounded-3xl px-8 py-4 border border-gray-300/50 dark:border-gray-600/50"
+            : "max-w-7xl bg-transparent rounded-none px-4 py-4 border-0"
+        )}
+      >
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-xl font-bold text-white"
+          className={cn(
+            "text-xl font-bold transition-colors duration-300",
+            isScrolled
+              ? theme === "dark"
+                ? "text-white"
+                : "text-gray-900"
+              : theme === "dark"
+                ? "text-white"
+                : "text-gray-900"
+          )}
         >
           Portfolio
         </motion.div>
@@ -54,7 +68,16 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
               key={item.name}
               onClick={() => handleNavClick(item.href)}
               whileHover={{ y: -2 }}
-              className="text-white hover:text-blue-400 transition-colors duration-200"
+              className={cn(
+                "hover:text-blue-400 transition-colors duration-200",
+                isScrolled
+                  ? theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-800"
+                  : theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-800"
+              )}
             >
               {item.name}
             </motion.button>
@@ -64,12 +87,35 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-white/10 transition-colors"
+            className={cn(
+              "p-2 rounded-full transition-colors",
+              isScrolled
+                ? "hover:bg-gray-100 dark:hover:bg-gray-800"
+                : "hover:bg-white/10"
+            )}
           >
             {theme === "dark" ? (
-              <Sun className="w-5 h-5 text-white" />
+              <Sun className={cn(
+                "w-5 h-5 transition-colors",
+                isScrolled
+                  ? theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+                  : theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+              )} />
             ) : (
-              <Moon className="w-5 h-5 text-white" />
+              <Moon className={cn(
+                "w-5 h-5 transition-colors",
+                isScrolled
+                  ? theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+                  : theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+              )} />
             )}
           </motion.button>
         </div>
@@ -79,12 +125,35 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-white/10 transition-colors"
+            className={cn(
+              "p-2 rounded-full transition-colors",
+              isScrolled
+                ? "hover:bg-gray-100 dark:hover:bg-gray-800"
+                : "hover:bg-white/10"
+            )}
           >
             {theme === "dark" ? (
-              <Sun className="w-5 h-5 text-white" />
+              <Sun className={cn(
+                "w-5 h-5 transition-colors",
+                isScrolled
+                  ? theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+                  : theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+              )} />
             ) : (
-              <Moon className="w-5 h-5 text-white" />
+              <Moon className={cn(
+                "w-5 h-5 transition-colors",
+                isScrolled
+                  ? theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+                  : theme === "dark"
+                    ? "text-gray-300"
+                    : "text-gray-700"
+              )} />
             )}
           </motion.button>
 
@@ -92,7 +161,16 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-white"
+            className={cn(
+              "p-2 transition-colors",
+              isScrolled
+                ? theme === "dark"
+                  ? "text-gray-300"
+                  : "text-gray-700"
+                : theme === "dark"
+                  ? "text-gray-300"
+                  : "text-gray-700"
+            )}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -108,15 +186,29 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden mt-4 pb-4 border-t border-white/10"
+          className={cn(
+            "md:hidden mt-4 mx-4 px-6 py-5 rounded-2xl backdrop-blur-md",
+            isScrolled
+              ? "bg-white/95 dark:bg-black/90 border border-gray-300/50 dark:border-gray-600/50"
+              : "bg-black/90 border border-gray-600/50"
+          )}
         >
-          <div className="flex flex-col space-y-4 pt-4">
+          <div className="flex flex-col space-y-2">
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
                 whileHover={{ x: 10 }}
-                className="text-white hover:text-blue-400 transition-colors duration-200 px-2 text-left"
+                className={cn(
+                  "text-left px-3 py-2 rounded-lg hover:text-blue-400 transition-colors duration-200",
+                  isScrolled
+                    ? theme === "dark"
+                      ? "text-gray-300 hover:bg-gray-800"
+                      : "text-gray-700 hover:bg-gray-100"
+                    : theme === "dark"
+                      ? "text-gray-300 hover:bg-white/10"
+                      : "text-gray-700 hover:bg-white/10"
+                )}
               >
                 {item.name}
               </motion.button>
