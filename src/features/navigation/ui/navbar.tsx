@@ -98,15 +98,14 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                     theme === "dark"
                       ? "0 2px 4px rgba(255,255,255,0.1)"
                       : "0 2px 4px rgba(0,0,0,0.1)",
-                  background:
-                    theme === "dark"
-                      ? "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)"
-                      : "linear-gradient(90deg, #1f2937 0%, #7c3aed 25%, #2563eb 50%, #0891b2 75%, #1f2937 100%)",
-                  backgroundSize: "200% auto",
-                  color: "transparent",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  animation: "shimmer 3s ease-in-out infinite",
+                  ...(theme === "dark" && {
+                    background: "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)",
+                    backgroundSize: "200% auto",
+                    color: "transparent",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    animation: "shimmer 3s ease-in-out infinite",
+                  }),
                 }}
               >
                 Juniverse
