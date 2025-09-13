@@ -8,8 +8,8 @@ import { cn, scrollToElement } from "@/shared/lib";
 import { useScroll, useTheme } from "@/shared/hooks";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
   { name: "Experience", href: "/experience" },
   { name: "Project", href: "/project" },
   { name: "Article", href: "/articles" },
@@ -48,17 +48,14 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{
-        y: isVisible ? 0 : -100,
-        opacity: isVisible ? 1 : 0,
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, position: "fixed" }}
       transition={{
         duration: 0.3,
         ease: [0.4, 0, 0.2, 1],
       }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "top-8 sm:top-10 left-0 right-0 z-50 transition-all duration-300 w-full fixed",
         className
       )}
     >
@@ -71,7 +68,7 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
             "shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]",
             "dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]",
             isScrolled
-              ? "max-w-4xl bg-white/20 dark:bg-black/30 rounded-2xl px-6 py-3"
+              ? "max-w-4xl bg-white/30 dark:bg-black/40 rounded-2xl px-6 py-2 shadow-lg"
               : "max-w-6xl bg-white/10 dark:bg-black/20 rounded-3xl px-8 py-4"
           )}
           style={{
@@ -98,9 +95,10 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
                     theme === "dark"
                       ? "0 2px 4px rgba(255,255,255,0.1)"
                       : "0 2px 4px rgba(0,0,0,0.1)",
-                  background: theme === "dark"
-                    ? "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)"
-                    : "linear-gradient(90deg, #1f2937 0%, #7c3aed 25%, #2563eb 50%, #0891b2 75%, #1f2937 100%)",
+                  background:
+                    theme === "dark"
+                      ? "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)"
+                      : "linear-gradient(90deg, #1f2937 0%, #7c3aed 25%, #2563eb 50%, #0891b2 75%, #1f2937 100%)",
                   backgroundSize: "200% auto",
                   color: "transparent",
                   WebkitBackgroundClip: "text",
