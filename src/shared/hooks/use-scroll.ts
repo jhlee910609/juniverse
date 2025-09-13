@@ -3,16 +3,44 @@
 import { useState, useEffect } from "react";
 
 export function useScroll() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollState, setScrollState] = useState({
+    isScrolled: false,
+    isScrollingUp: false,
+    isScrollingDown: false,
+    scrollY: 0,
+    isVisible: true,
+  });
 
   useEffect(() => {
+    let lastScrollY = 0;
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const isScrollingUp = currentScrollY < lastScrollY;
+          const isScrollingDown = currentScrollY > lastScrollY;
+
+          setScrollState({
+            isScrolled: currentScrollY > 50,
+            isScrollingUp,
+            isScrollingDown,
+            scrollY: currentScrollY,
+            isVisible: currentScrollY < 100 || isScrollingUp || Math.abs(currentScrollY - lastScrollY) < 5,
+          });
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return isScrolled;
+  return scrollState;
 }

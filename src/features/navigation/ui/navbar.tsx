@@ -20,10 +20,21 @@ interface NavbarProps {
 }
 
 export const Navbar = memo(function Navbar({ className }: NavbarProps) {
-  const isScrolled = useScroll();
+  const { isScrolled, isVisible } = useScroll();
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
   const router = useRouter();
+
+  React.useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   const handleNavClick = (href: string) => {
     if (href.startsWith("#")) {
@@ -36,201 +47,214 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{
+        y: isVisible ? 0 : -100,
+        opacity: isVisible ? 1 : 0,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: [0.4, 0, 0.2, 1],
+      }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         className
       )}
     >
-      <div
-        className={cn(
-          "mx-auto flex items-center justify-between transition-all duration-500",
-          "mt-4 backdrop-blur-md",
-          isScrolled
-            ? "max-w-4xl bg-white/95 dark:bg-black/90 rounded-3xl px-8 py-4 border border-gray-300/50 dark:border-gray-600/50"
-            : "max-w-7xl bg-transparent rounded-none px-4 py-4 border-0"
-        )}
-      >
-        <motion.div
-          whileHover={{ scale: 1.05 }}
+      {/* Glassmorphism Container */}
+      <div className="w-full px-4 pt-4">
+        <motion.nav
           className={cn(
-            "text-xl font-bold transition-colors duration-300",
+            "mx-auto transition-all duration-500 ease-out",
+            "backdrop-blur-xl border border-white/20 dark:border-white/10",
+            "shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]",
+            "dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]",
             isScrolled
-              ? theme === "dark"
-                ? "text-white"
-                : "text-gray-900"
-              : theme === "dark"
-              ? "text-white"
-              : "text-gray-900"
+              ? "max-w-4xl bg-white/20 dark:bg-black/30 rounded-2xl px-6 py-3"
+              : "max-w-6xl bg-white/10 dark:bg-black/20 rounded-3xl px-8 py-4"
           )}
+          style={{
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+          }}
         >
-          Portfolio
-        </motion.div>
-
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <motion.button
-              key={item.name}
-              onClick={() => handleNavClick(item.href)}
-              whileHover={{ y: -2 }}
-              className={cn(
-                "hover:text-blue-400 transition-colors duration-200",
-                isScrolled
-                  ? theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-800"
-                  : theme === "dark"
-                  ? "text-gray-300"
-                  : "text-gray-800"
-              )}
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleNavClick("#home")}
+              className="cursor-pointer"
             >
-              {item.name}
-            </motion.button>
-          ))}
+              <motion.h1
+                className={cn(
+                  "font-bold transition-all duration-300 relative overflow-hidden",
+                  " dark:text-white",
+                  isScrolled ? "text-lg" : "text-xl"
+                )}
+                style={{
+                  textShadow:
+                    theme === "dark"
+                      ? "0 2px 4px rgba(255,255,255,0.1)"
+                      : "0 2px 4px rgba(0,0,0,0.1)",
+                  background: theme === "dark"
+                    ? "linear-gradient(90deg, #ffffff 0%, #a855f7 25%, #3b82f6 50%, #06b6d4 75%, #ffffff 100%)"
+                    : "linear-gradient(90deg, #1f2937 0%, #7c3aed 25%, #2563eb 50%, #0891b2 75%, #1f2937 100%)",
+                  backgroundSize: "200% auto",
+                  color: "transparent",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  animation: "shimmer 3s ease-in-out infinite",
+                }}
+              >
+                Juniverse
+              </motion.h1>
+            </motion.div>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={toggleTheme}
-            className={cn(
-              "p-2 rounded-full transition-colors",
-              isScrolled
-                ? "hover:bg-gray-100 dark:hover:bg-gray-800"
-                : "hover:bg-white/10"
-            )}
-          >
-            {theme === "dark" ? (
-              <Sun
-                className={cn(
-                  "w-5 h-5 transition-colors",
-                  isScrolled
-                    ? theme === "dark"
-                      ? "text-gray-300"
-                      : "text-gray-700"
-                    : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-                )}
-              />
-            ) : (
-              <Moon
-                className={cn(
-                  "w-5 h-5 transition-colors",
-                  isScrolled
-                    ? theme === "dark"
-                      ? "text-gray-300"
-                      : "text-gray-700"
-                    : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-                )}
-              />
-            )}
-          </motion.button>
-        </div>
+            {/* Desktop Navigation */}
+            {!isMobile && (
+              <div className="flex items-center space-x-1">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.href)}
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className={cn(
+                      "px-4 py-2 rounded-xl font-medium transition-all duration-200",
+                      "text-gray-800 dark:text-white",
+                      "hover:text-blue-600 dark:hover:text-blue-400",
+                      "hover:bg-white/10 dark:hover:bg-white/10"
+                    )}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
 
-        <div className="md:hidden flex items-center space-x-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={toggleTheme}
-            className={cn(
-              "p-2 rounded-full transition-colors",
-              isScrolled
-                ? "hover:bg-gray-100 dark:hover:bg-gray-800"
-                : "hover:bg-white/10"
+                {/* Theme Toggle */}
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 180 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={toggleTheme}
+                  className={cn(
+                    "p-3 rounded-xl transition-all duration-200",
+                    "text-gray-800 dark:text-white",
+                    "hover:bg-white/10 dark:hover:bg-white/10",
+                    "ml-2"
+                  )}
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-5 h-5" />
+                  ) : (
+                    <Moon className="w-5 h-5" />
+                  )}
+                </motion.button>
+              </div>
             )}
-          >
-            {theme === "dark" ? (
-              <Sun
-                className={cn(
-                  "w-5 h-5 transition-colors",
-                  isScrolled
-                    ? theme === "dark"
-                      ? "text-gray-300"
-                      : "text-gray-700"
-                    : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-                )}
-              />
-            ) : (
-              <Moon
-                className={cn(
-                  "w-5 h-5 transition-colors",
-                  isScrolled
-                    ? theme === "dark"
-                      ? "text-gray-300"
-                      : "text-gray-700"
-                    : theme === "dark"
-                    ? "text-gray-300"
-                    : "text-gray-700"
-                )}
-              />
-            )}
-          </motion.button>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={cn(
-              "p-2 transition-colors",
-              isScrolled
-                ? theme === "dark"
-                  ? "text-gray-300"
-                  : "text-gray-700"
-                : theme === "dark"
-                ? "text-gray-300"
-                : "text-gray-700"
+            {/* Mobile Menu */}
+            {isMobile && (
+              <div className="flex items-center space-x-2">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={toggleTheme}
+                  className="p-2 rounded-xl text-gray-800 dark:text-white hover:bg-white/10"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-5 h-5" />
+                  ) : (
+                    <Moon className="w-5 h-5" />
+                  )}
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="p-2 rounded-xl text-gray-800 dark:text-white hover:bg-white/10"
+                >
+                  <motion.div
+                    animate={isMobileMenuOpen ? { rotate: 180 } : { rotate: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {isMobileMenuOpen ? (
+                      <X className="w-6 h-6" />
+                    ) : (
+                      <Menu className="w-6 h-6" />
+                    )}
+                  </motion.div>
+                </motion.button>
+              </div>
             )}
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </motion.button>
-        </div>
+          </div>
+        </motion.nav>
       </div>
 
-      {isMobileMenuOpen && (
+      {/* Mobile Dropdown Menu */}
+      {isMobile && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className={cn(
-            "md:hidden mt-4 mx-4 px-6 py-5 rounded-2xl backdrop-blur-md",
-            isScrolled
-              ? "bg-white/95 dark:bg-black/90 border border-gray-300/50 dark:border-gray-600/50"
-              : "bg-black/90 border border-gray-600/50"
-          )}
+          initial={false}
+          animate={{
+            height: isMobileMenuOpen ? "auto" : 0,
+            opacity: isMobileMenuOpen ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          className="overflow-hidden"
         >
-          <div className="flex flex-col space-y-2">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                onClick={() => handleNavClick(item.href)}
-                whileHover={{ x: 10 }}
-                className={cn(
-                  "text-left px-3 py-2 rounded-lg hover:text-blue-400 transition-colors duration-200",
-                  isScrolled
-                    ? theme === "dark"
-                      ? "text-gray-300 hover:bg-gray-800"
-                      : "text-gray-700 hover:bg-gray-100"
-                    : theme === "dark"
-                    ? "text-gray-300 hover:bg-white/10"
-                    : "text-gray-700 hover:bg-white/10"
-                )}
-              >
-                {item.name}
-              </motion.button>
-            ))}
+          <div className="px-4 pb-4">
+            <motion.div
+              className={cn(
+                "mt-2 mx-auto max-w-6xl",
+                "bg-white/10 dark:bg-black/10 backdrop-blur-xl",
+                "border border-white/20 dark:border-white/10",
+                "rounded-2xl p-4",
+                "shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]",
+                "dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]"
+              )}
+              style={{
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+              }}
+            >
+              <div className="space-y-2">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.href)}
+                    whileHover={{
+                      x: 4,
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className={cn(
+                      "block w-full text-left px-4 py-3 rounded-xl",
+                      "text-gray-800 dark:text-white font-medium",
+                      "hover:text-blue-600 dark:hover:text-blue-400",
+                      "transition-all duration-200"
+                    )}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{
+                      opacity: isMobileMenuOpen ? 1 : 0,
+                      x: isMobileMenuOpen ? 0 : -20,
+                    }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       )}
-    </motion.nav>
+    </motion.header>
   );
 });
