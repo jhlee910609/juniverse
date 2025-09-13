@@ -60,6 +60,7 @@ export function getAllArticles(): ArticleMetadata[] {
       if (!article) return null;
 
       // content 제외한 메타데이터만 반환
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { content, ...metadata } = article;
       return metadata;
     })
