@@ -1,7 +1,7 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { experiences } from "@/entities/user";
 import { ExperienceCard } from "@/features/experience/ui/experience-card";
 

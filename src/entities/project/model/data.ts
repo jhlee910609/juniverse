@@ -1,4 +1,4 @@
-import { Project } from "./types";
+import type { Project } from "./types";
 
 export const projects: Project[] = [
   {
@@ -24,14 +24,7 @@ export const projects: Project[] = [
     description:
       "Miridih에서 개발한 온라인 디자인 플랫폼. 복잡한 Canvas API와 WebGL을 활용한 그래픽 렌더링 시스템 구축. 사용자가 직관적으로 디자인을 제작할 수 있는 캔버스 에디터 기능 개발. 창작자들을 위한 고성능 디자인 툴 제공.",
     image: "/api/placeholder/600/400",
-    tags: [
-      "React",
-      "TypeScript",
-      "Canvas API",
-      "WebGL",
-      "UI/UX Development",
-      "Graphics Rendering",
-    ],
+    tags: ["React", "TypeScript", "Canvas API", "WebGL", "UI/UX Development", "Graphics Rendering"],
     liveUrl: "https://www.miricanvas.com",
     githubUrl: [],
   },
@@ -41,13 +34,7 @@ export const projects: Project[] = [
     description:
       "WeStudy에서 개발한 교육 플랫폼의 학사 관리 시스템. 학생과 선생님을 위한 효율적인 학사 관리 도구 개발. React를 기반으로 한 모던한 사용자 인터페이스 구축. 교육 산업의 디지털 트랜스포메이션에 기여.",
     image: "/api/placeholder/600/400",
-    tags: [
-      "React",
-      "JavaScript",
-      "HTML/CSS",
-      "Frontend Development",
-      "Education Platform",
-    ],
+    tags: ["React", "JavaScript", "HTML/CSS", "Frontend Development", "Education Platform"],
     liveUrl: "",
     githubUrl: [],
   },

@@ -1,4 +1,4 @@
-import { Project } from "./types";
+import type { Project } from "./types";
 
 export const openSourceProjects: Project[] = [
   {
@@ -26,8 +26,7 @@ export const openSourceProjects: Project[] = [
       "React wrapper component for product analytics tracking. Received encouragement award from National IT Industry Promotion Agency and collaborated with 10+ developers.",
     image: "/api/placeholder/600/400",
     tags: ["React", "TypeScript", "Analytics", "NPM", "Open Source"],
-    liveUrl:
-      "https://www.npmjs.com/package/@every-analytics/react-analytics-provider",
+    liveUrl: "https://www.npmjs.com/package/@every-analytics/react-analytics-provider",
     githubUrl: [
       {
         label: "GitHub Repository",

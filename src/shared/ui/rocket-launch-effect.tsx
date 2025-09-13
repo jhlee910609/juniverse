@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, memo } from "react";
 import { motion } from "framer-motion";
+import { memo, useState } from "react";
 import { cn } from "@/shared/lib";
 
 interface RocketLaunchEffectProps {

@@ -1,8 +1,8 @@
 "use client";
 
-import { Project } from "@/entities/project/model/types";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import type { Project } from "@/entities/project/model/types";
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -22,9 +22,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Open Source <span className="text-blue-400">Contributions</span>
           </h2>
-          <p className="text-xl text-muted-foreground">
-            혼자 글적글적 열심히 했던 흔적들
-          </p>
+          <p className="text-xl text-muted-foreground">혼자 글적글적 열심히 했던 흔적들</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -45,19 +43,14 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {project.title}
-                </h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">{project.title}</h3>
                 <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 bg-muted text-foreground rounded text-xs"
-                    >
+                    <span key={tag} className="px-2 py-1 bg-muted text-foreground rounded text-xs">
                       {tag}
                     </span>
                   ))}

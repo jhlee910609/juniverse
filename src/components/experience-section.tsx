@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { Calendar, MapPin } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const experiences = [
   {
@@ -80,7 +80,9 @@ export function ExperienceSection() {
                   <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-blue-400 transition-colors">
                     {exp.title}
                   </h3>
-                  <h4 className="text-xl text-blue-400 mb-3 group-hover:text-blue-300 transition-colors">{exp.company}</h4>
+                  <h4 className="text-xl text-blue-400 mb-3 group-hover:text-blue-300 transition-colors">
+                    {exp.company}
+                  </h4>
 
                   <div className="flex flex-wrap gap-4 mb-4 text-muted-foreground">
                     <div className="flex items-center gap-2">

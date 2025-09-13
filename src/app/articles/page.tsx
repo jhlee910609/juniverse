@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
 import { ArticleCard } from "@/features/articles/ui/article-card";
 import { ArticleSearch } from "@/features/articles/ui/article-search";
-import { ArticleMetadata } from "@/shared/types/article";
 import { useTheme } from "@/shared/hooks";
+import type { ArticleMetadata } from "@/shared/types/article";
 
 // Mock data - 실제로는 API나 파일에서 가져올 예정
 const mockArticles: ArticleMetadata[] = [];
@@ -33,12 +33,10 @@ export default function ArticlesPage() {
         article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         article.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCategory =
-        !selectedCategory || article.category === selectedCategory;
+      const matchesCategory = !selectedCategory || article.category === selectedCategory;
 
       const matchesTags =
-        selectedTags.length === 0 ||
-        selectedTags.some((tag) => article.tags.includes(tag));
+        selectedTags.length === 0 || selectedTags.some((tag) => article.tags.includes(tag));
 
       return matchesSearch && matchesCategory && matchesTags;
     });
@@ -124,12 +122,8 @@ export default function ArticlesPage() {
           ) : (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">📝</div>
-              <h3 className="text-2xl font-semibold mb-2">
-                검색 결과가 없습니다
-              </h3>
-              <p
-                className={theme === "dark" ? "text-gray-400" : "text-gray-600"}
-              >
+              <h3 className="text-2xl font-semibold mb-2">검색 결과가 없습니다</h3>
+              <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>
                 다른 키워드로 검색하거나 필터를 조정해보세요.
               </p>
             </div>

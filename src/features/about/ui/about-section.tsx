@@ -1,19 +1,21 @@
 "use client";
 
-import { memo } from "react";
 import { motion } from "framer-motion";
-import { Code2, Palette, Zap, Heart } from "lucide-react";
+import { Code2, Heart, Palette, Zap } from "lucide-react";
+import { memo } from "react";
 
 const highlights = [
   {
     icon: Code2,
     title: "Full-stack Development",
-    description: "React, TypeScript 프론트엔드부터 Node.js, MySQL 백엔드까지 풀스택 개발 경험을 보유하고 있습니다.",
+    description:
+      "React, TypeScript 프론트엔드부터 Node.js, MySQL 백엔드까지 풀스택 개발 경험을 보유하고 있습니다.",
   },
   {
     icon: Palette,
     title: "Canvas & WebGL",
-    description: "복잡한 그래픽 렌더링과 Canvas API, WebGL을 활용한 고성능 UI 컴포넌트 개발 전문성을 가지고 있습니다.",
+    description:
+      "복잡한 그래픽 렌더링과 Canvas API, WebGL을 활용한 고성능 UI 컴포넌트 개발 전문성을 가지고 있습니다.",
   },
   {
     icon: Zap,
@@ -23,7 +25,8 @@ const highlights = [
   {
     icon: Heart,
     title: "E-commerce & Platform",
-    description: "대규모 이커머스와 디자인 플랫폼 개발 경험으로 안정적인 서비스 구축 노하우를 보유합니다.",
+    description:
+      "대규모 이커머스와 디자인 플랫폼 개발 경험으로 안정적인 서비스 구축 노하우를 보유합니다.",
   },
 ] as const;
 
@@ -73,12 +76,12 @@ export const AboutSection = memo(function AboutSection() {
           >
             <p className="text-gray-300 text-lg leading-relaxed">
               롯데쇼핑 이커머스 플랫폼에서 번들 사이즈 50% 감소를 달성하고, 미리디 캔버스 에디터에서
-              복잡한 그래픽 렌더링 시스템을 구축했습니다. WeStudy CRM 시스템 개발을 통해 풀스택 개발 역량을 기른
-              경험 있는 소프트웨어 엔지니어입니다.
+              복잡한 그래픽 렌더링 시스템을 구축했습니다. WeStudy CRM 시스템 개발을 통해 풀스택 개발
+              역량을 기른 경험 있는 소프트웨어 엔지니어입니다.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
-              React, TypeScript, Node.js를 중심으로 한 현대적인 웹 기술 스택을 활용하여
-              확장 가능하고 유지보수가 용이한 애플리케이션을 개발합니다. 성능 최적화와 사용자 경험 개선에
+              React, TypeScript, Node.js를 중심으로 한 현대적인 웹 기술 스택을 활용하여 확장
+              가능하고 유지보수가 용이한 애플리케이션을 개발합니다. 성능 최적화와 사용자 경험 개선에
               특별한 관심을 가지고 지속적으로 학습하며 성장하고 있습니다.
             </p>
 
@@ -134,7 +137,7 @@ export const AboutSection = memo(function AboutSection() {
             whileTap={{ scale: 0.95 }}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
           >
-함께 일해요
+            함께 일해요
           </motion.button>
         </motion.div>
       </div>

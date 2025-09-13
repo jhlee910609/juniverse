@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function useScroll() {
   const [scrollState, setScrollState] = useState({
@@ -28,7 +28,8 @@ export function useScroll() {
             isScrollingUp,
             isScrollingDown,
             scrollY: currentScrollY,
-            isVisible: currentScrollY < 100 || isScrollingUp || Math.abs(currentScrollY - lastScrollY) < 5,
+            isVisible:
+              currentScrollY < 100 || isScrollingUp || Math.abs(currentScrollY - lastScrollY) < 5,
           });
 
           lastScrollY = currentScrollY;

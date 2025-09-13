@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface RocketLaunchEffectProps {
@@ -24,21 +24,25 @@ export function RocketLaunchEffect({ children, className }: RocketLaunchEffectPr
       <div className="absolute -top-2 -right-2 pointer-events-none">
         <motion.div
           initial={{ y: 0, opacity: 0.7 }}
-          animate={isHovered ? {
-            y: -100,
-            opacity: 0,
-            rotate: -15,
-            scale: [1, 1.2, 0.8]
-          } : {
-            y: 0,
-            opacity: 0.7,
-            rotate: 0,
-            scale: 1
-          }}
+          animate={
+            isHovered
+              ? {
+                  y: -100,
+                  opacity: 0,
+                  rotate: -15,
+                  scale: [1, 1.2, 0.8],
+                }
+              : {
+                  y: 0,
+                  opacity: 0.7,
+                  rotate: 0,
+                  scale: 1,
+                }
+          }
           transition={{
             duration: 0.8,
             ease: "easeOut",
-            opacity: { delay: isHovered ? 0.3 : 0 }
+            opacity: { delay: isHovered ? 0.3 : 0 },
           }}
           className="text-2xl"
         >

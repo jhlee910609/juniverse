@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { cn } from "@/shared/lib";
 
 interface TypewriterEffectProps {
@@ -25,22 +25,25 @@ export const TypewriterEffect = memo(function TypewriterEffect({
   useEffect(() => {
     const currentText = texts[currentIndex];
 
-    const timeout = setTimeout(() => {
-      if (isDeleting) {
-        setDisplayText(currentText.substring(0, displayText.length - 1));
+    const timeout = setTimeout(
+      () => {
+        if (isDeleting) {
+          setDisplayText(currentText.substring(0, displayText.length - 1));
 
-        if (displayText === "") {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-        }
-      } else {
-        setDisplayText(currentText.substring(0, displayText.length + 1));
+          if (displayText === "") {
+            setIsDeleting(false);
+            setCurrentIndex((prev) => (prev + 1) % texts.length);
+          }
+        } else {
+          setDisplayText(currentText.substring(0, displayText.length + 1));
 
-        if (displayText === currentText) {
-          setTimeout(() => setIsDeleting(true), delayBetween);
+          if (displayText === currentText) {
+            setTimeout(() => setIsDeleting(true), delayBetween);
+          }
         }
-      }
-    }, isDeleting ? deletingSpeed : typingSpeed);
+      },
+      isDeleting ? deletingSpeed : typingSpeed
+    );
 
     return () => clearTimeout(timeout);
   }, [displayText, currentIndex, isDeleting, texts, typingSpeed, deletingSpeed, delayBetween]);
