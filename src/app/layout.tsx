@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Exo_2, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { SmoothScroll } from "@/components/smooth-scroll";
-import { ThemeProvider } from "@/contexts/theme-context";
+import { Header } from "@/widgets/header";
+import { SmoothScrollProvider } from "@/app/providers";
 
 const exo2 = Exo_2({
   subsets: ["latin"],
@@ -32,11 +31,10 @@ export default function RootLayout({
       <body
         className={`${exo2.variable} ${jetbrainsMono.variable} antialiased font-sans scroll-smooth`}
       >
-        <ThemeProvider>
-          <SmoothScroll />
-          <Navbar />
+        <SmoothScrollProvider>
+          <Header />
           <main>{children}</main>
-        </ThemeProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );
