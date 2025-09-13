@@ -48,14 +48,17 @@ export const Navbar = memo(function Navbar({ className }: NavbarProps) {
 
   return (
     <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, position: "fixed" }}
+      initial={{ opacity: 0, position: "fixed" }}
+      animate={{
+        opacity: 1,
+        position: "fixed",
+      }}
       transition={{
         duration: 0.3,
         ease: [0.4, 0, 0.2, 1],
       }}
       className={cn(
-        "top-8 sm:top-10 left-0 right-0 z-50 transition-all duration-300 w-full fixed",
+        "top-8 sm:top-10 left-0 right-0 z-50 transition-all duration-300 w-full",
         className
       )}
     >

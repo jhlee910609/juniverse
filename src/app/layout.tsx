@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <SmoothScrollProvider>
           <Header />
-          <main>{children}</main>
+          <main className="pt-24 sm:pt-28">{children}</main>
         </SmoothScrollProvider>
       </body>
     </html>
