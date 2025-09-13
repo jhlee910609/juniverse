@@ -1,40 +1,14 @@
 "use client";
 
+import { Project } from "@/entities/project/model/types";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import { ImageComparisonSlider } from "./image-comparison-slider";
+import { Github } from "lucide-react";
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A modern e-commerce platform built with Next.js and Stripe integration. Features include product catalog, shopping cart, and secure payment processing.",
-    image: "/api/placeholder/600/400",
-    tags: ["Next.js", "TypeScript", "Stripe", "Prisma", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "/api/placeholder/600/400",
-    tags: ["React", "Firebase", "Framer Motion", "DnD Kit"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A beautiful weather dashboard that provides detailed weather information with interactive charts and location-based forecasts.",
-    image: "/api/placeholder/600/400",
-    tags: ["React", "Chart.js", "OpenWeather API", "Geolocation"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-  },
-];
+interface ProjectsSectionProps {
+  projects: Project[];
+}
 
-export function ProjectsSection() {
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section id="projects" className="py-20 px-4 bg-muted">
       <div className="max-w-6xl mx-auto">
@@ -46,34 +20,11 @@ export function ProjectsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My <span className="text-blue-400">Projects</span>
+            Open Source <span className="text-blue-400">Contributions</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            자랑스럽게 소개하는 최근 작업들
+            혼자 글적글적 열심히 했던 흔적들
           </p>
-        </motion.div>
-
-        {/* Image Comparison Demo */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-bold text-foreground mb-4 text-center">
-            Interactive Image Comparison
-          </h3>
-          <p className="text-muted-foreground text-center mb-6">
-            드래그해서 Before/After를 비교해보세요
-          </p>
-          <ImageComparisonSlider
-            beforeImage=""
-            afterImage=""
-            alt1="Before design"
-            alt2="After design"
-            className="max-w-4xl mx-auto"
-          />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -112,29 +63,21 @@ export function ProjectsSection() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
-                  <motion.a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors text-sm"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    데모 보기
-                  </motion.a>
-                  <motion.a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-muted text-foreground rounded transition-colors text-sm"
-                  >
-                    <Github className="w-4 h-4" />
-                    코드 보기
-                  </motion.a>
+                <div className="flex gap-4 flex-wrap">
+                  {project.githubUrl.map((github, urlIndex) => (
+                    <motion.a
+                      key={urlIndex}
+                      href={github.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-muted text-foreground rounded transition-colors text-sm"
+                    >
+                      <Github className="w-4 h-4" />
+                      {github.label}
+                    </motion.a>
+                  ))}
                 </div>
               </div>
             </motion.div>

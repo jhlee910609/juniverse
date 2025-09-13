@@ -1,3 +1,8 @@
+interface GithubUrl {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -5,5 +10,5 @@ export interface Project {
   image?: string;
   tags: string[];
   liveUrl: string;
-  githubUrl: string;
+  githubUrl: GithubUrl[];
 }

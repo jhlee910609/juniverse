@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "E-commerce",
     ],
     liveUrl: "https://www.lotteon.com/p/display/main/lotteon?mall_no=1",
-    githubUrl: "",
+    githubUrl: [],
   },
   {
     id: "2",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "Graphics Rendering",
     ],
     liveUrl: "https://www.miricanvas.com",
-    githubUrl: "",
+    githubUrl: [],
   },
   {
     id: "3",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
       "Education Platform",
     ],
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: [],
   },
   {
     id: "4",
@@ -66,6 +66,6 @@ export const projects: Project[] = [
       "FSD Architecture",
     ],
     liveUrl: "",
-    githubUrl: "https://github.com",
+    githubUrl: ["https://github.com"],
   },
 ];
