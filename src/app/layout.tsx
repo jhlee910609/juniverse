@@ -3,6 +3,7 @@ import { Exo_2, JetBrains_Mono, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/app/providers";
 import { Header } from "@/widgets/header";
+import { SparklingEffect } from "@/shared/ui";
 
 const exo2 = Exo_2({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body
         className={`${exo2.variable} ${jetbrainsMono.variable} ${notoSansKr.variable} antialiased font-sans scroll-smooth`}
       >
+        <SparklingEffect />
         <SmoothScrollProvider>
           <Header />
           <main className="pt-24 sm:pt-28">{children}</main>

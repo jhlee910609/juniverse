@@ -57,42 +57,6 @@ body {
   color: var(--foreground);
 }
 
-/* Custom scrollbar for dark theme */
-.dark ::-webkit-scrollbar {
-  width: 8px;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
-}
-
-/* Custom scrollbar for light theme */
-.light ::-webkit-scrollbar {
-  width: 8px;
-}
-
-.light ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-.light ::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 4px;
-}
-
-.light ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
-}
-
 /* Shimmer animation for text */
 @keyframes shimmer {
   0% {
@@ -101,4 +65,26 @@ body {
   100% {
     background-position: 200% 0;
   }
+}
+
+/* Sparkling effect animation */
+@keyframes sparkle {
+  0%,
+  20% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
 }
