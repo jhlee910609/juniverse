@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "E-commerce",
     ],
     liveUrl: "https://www.lotteon.com/p/display/main/lotteon?mall_no=1",
-    githubUrl: [],
+    urls: [],
   },
   {
     id: "2",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["React", "TypeScript", "Canvas API", "WebGL", "UI/UX Development", "Graphics Rendering"],
     liveUrl: "https://www.miricanvas.com",
-    githubUrl: [],
+    urls: [],
   },
   {
     id: "3",
@@ -36,6 +36,6 @@ export const projects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["React", "JavaScript", "HTML/CSS", "Frontend Development", "Education Platform"],
     liveUrl: "",
-    githubUrl: [],
+    urls: [],
   },
 ];

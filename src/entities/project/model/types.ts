@@ -1,6 +1,7 @@
-interface GithubUrl {
+interface Url {
   label: string;
   url: string;
+  type: "news" | "github";
 }
 
 export interface Project {
@@ -10,5 +11,5 @@ export interface Project {
   image?: string;
   tags: string[];
   liveUrl: string;
-  githubUrl: GithubUrl[];
+  urls: Url[];
 }

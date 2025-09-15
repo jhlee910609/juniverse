@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github } from "lucide-react";
+import { Github, Newspaper } from "lucide-react";
 import type { Project } from "@/entities/project/model/types";
 
 interface ProjectsSectionProps {
@@ -10,7 +10,7 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="py-20 px-4 bg-muted">
+    <section id="projects" className="py-20 px-4 ">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
 
                 <div className="flex gap-4 flex-wrap">
-                  {project.githubUrl.map((github, urlIndex) => (
+                  {project.urls.map((github, urlIndex) => (
                     <motion.a
                       key={urlIndex}
                       href={github.url}
@@ -67,7 +67,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                       whileTap={{ scale: 0.95 }}
                       className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-muted text-foreground rounded transition-colors text-sm"
                     >
-                      <Github className="w-4 h-4" />
+                      {github.type === "github" && <Github className="w-4 h-4" />}
+                      {github.type === "news" && <Newspaper className="w-4 h-4" />}
+
                       {github.label}
                     </motion.a>
                   ))}

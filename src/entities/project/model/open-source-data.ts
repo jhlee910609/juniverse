@@ -8,14 +8,16 @@ export const openSourceProjects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["멘토링", "취업"],
     liveUrl: "",
-    githubUrl: [
+    urls: [
       {
         label: "기사",
         url: "https://www.codestates.com/blog/content/newsroom-220824",
+        type: "news",
       },
       {
         label: "멘토링 활동",
         url: "https://jhlee910609.github.io/til_everything/mentoring",
+        type: "github",
       },
     ],
   },
@@ -27,10 +29,11 @@ export const openSourceProjects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["React", "TypeScript", "Analytics", "NPM", "Open Source"],
     liveUrl: "https://www.npmjs.com/package/@every-analytics/react-analytics-provider",
-    githubUrl: [
+    urls: [
       {
         label: "GitHub Repository",
         url: "https://github.com/EveryAnalytics/react-analytics-provider",
+        type: "github",
       },
     ],
   },
@@ -42,10 +45,11 @@ export const openSourceProjects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["Documentation", "Analytics", "Web Development", "Guide"],
     liveUrl: "https://everyanalytics.github.io/web-analytics-handbook/",
-    githubUrl: [
+    urls: [
       {
         label: "GitHub Repository",
         url: "https://github.com/EveryAnalytics/web-analytics-handbook",
+        type: "github",
       },
     ],
   },
@@ -57,18 +61,21 @@ export const openSourceProjects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["Translation", "Documentation", "JavaScript", "MDN", "Open Source"],
     liveUrl: "https://github.com/mdn/translated-content",
-    githubUrl: [
+    urls: [
       {
         label: "Hoisting 관련 문서 오역 수정",
         url: "https://github.com/mdn/translated-content/issues/2335",
+        type: "github",
       },
       {
         label: "WeakMap 관련 문서 오역 수정",
         url: "https://github.com/mdn/translated-content/issues/2296",
+        type: "github",
       },
       {
         label: "CORS 관련 문서 오역 수정",
         url: "https://github.com/mdn/translated-content/issues/2315",
+        type: "github",
       },
     ],
   },
@@ -80,10 +87,11 @@ export const openSourceProjects: Project[] = [
     image: "/api/placeholder/600/400",
     tags: ["JavaScript", "Data Grid", "Open Source", "Code Optimization"],
     liveUrl: "https://jspreadsheet.com/",
-    githubUrl: [
+    urls: [
       {
         label: "중복코드 제거",
         url: "https://github.com/jspreadsheet/ce/pull/1305",
+        type: "github",
       },
     ],
   },
